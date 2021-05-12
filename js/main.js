@@ -1,5 +1,4 @@
 "use strict";
-
 // Variables para acceder a los elementos del HTML.
 const inputNumber = document.querySelector(".js-number");
 const button = document.querySelector(".js-button");
@@ -11,14 +10,13 @@ function getRandomNumber(max) {
     return Math.ceil(Math.random() * max);
 }
 
-let randomNumber = getRandomNumber(100); // variable para asignarle el parámetro 100 a la función anterior.
+let randomNumber = getRandomNumber(100); // variable para asignarle el parámetro máximo 100 a la función anterior.
 
 // 3. Mostrar en consola el número aleatorio para saber qué número se ha generado.
 console.log('Mi número aleatorio es ' + randomNumber);
 
-// 5. Comparar el número que la jugadora ha escrito en el input con el número aleatorio, y pintar las pistas correspondientes en la pantalla.
-  
-function checkNumber() {
+// 5. Comparar el número que la jugadora ha escrito en el input con el número aleatorio, y pintar las pistas correspondientes en la pantalla.  
+function checkNumber () {
     const userGuess = inputNumber.value;
   
     if (userGuess === '') {  
@@ -33,3 +31,19 @@ function checkNumber() {
         clue.innerHTML = "¡¡¡Enhorabuena, campeona!!!";
     }
 }
+
+// 6. Actualizar el contador de intentos cada vez que la jugadora pruebe.
+let guessCount = 0; // Para poner el contador a cero.
+function updateAttempts() {
+  guessCount = guessCount + 1;
+  attempts.innerHTML = "Número de intentos: " + guessCount;
+}
+
+// Función que creo para que se ejecuten a la vez las dos funciones anteriores.
+function handleGuessNumber(ev) {
+    ev.preventDefault(); // para que la página no se actualice con cada click
+    checkNumber();
+    updateAttempts();   
+  }
+
+button.addEventListener('click', handleGuessNumber); // evento
