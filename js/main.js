@@ -15,12 +15,12 @@ let randomNumber = getRandomNumber(100); // variable para asignarle el parámetr
 // 3. Mostrar en consola el número aleatorio para saber qué número se ha generado.
 console.log('Mi número aleatorio es ' + randomNumber);
 
-// 5. Comparar el número que la jugadora ha escrito en el input con el número aleatorio, y pintar las pistas correspondientes en la pantalla.  
+// 5. Comparar el número que la jugadora ha escrito en el input con el número aleatorio 
 function checkNumber () {
     const userGuess = inputNumber.value;
-  
+  // y pintar las pistas correspondientes en la pantalla.
     if (userGuess === '') {  
-      clue.innerHTML = "El número debe estar entre 1 y 100."; 
+        clue.innerHTML = "El número debe estar entre 1 y 100."; 
     } else if (userGuess < 1 || userGuess > 100) {
         clue.innerHTML = "El número debe estar entre 1 y 100.";
     } else if (userGuess > randomNumber) {
@@ -39,7 +39,7 @@ function updateAttempts() {
   attempts.innerHTML = "Número de intentos: " + guessCount;
 }
 
-// Función que creo para que se ejecuten a la vez las dos funciones anteriores.
+// Función para que se ejecuten a la vez las dos funciones anteriores.
 function handleGuessNumber(ev) {
     ev.preventDefault(); // para que la página no se actualice con cada click
     checkNumber();
